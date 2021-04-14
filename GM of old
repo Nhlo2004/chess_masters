@@ -1,0 +1,26 @@
+import pandas as pd
+chess_players=[
+   ['Capablanca', 'Cuba', 1898,2758],
+    ['Lasker', 'Germany', 1872, 2750],
+    ['Tarrasch', 'Germany', 1880,2700],
+    ['Marshall', 'USA', 1885,2710],
+    ['Nimzowitch', 'Poland', 1864,2670],
+]
+#changing 2D array
+into a Dataframe
+chess_players_df=pd.DataFrame(chess_players)
+chess_players_df.index=chess_players_df['name']
+print(chess_players_df)
+#description of the dataframe
+chess_players_df.describe()
+#above 2740 rated
+highest=chess_players_df['highest_rating']>2740
+#players from  Germany
+from_Germany=chess_players_df['country']=='Germany'
+chess_players_df[from_Germany]
+renamed_df=chess_players_df.rename(columns={
+                       'name':'lastName',
+                       'highest_rating':'peakRating'
+})
+#ploting a line graph
+chess_players_df.highest_rating.plot()
